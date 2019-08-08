@@ -44,14 +44,6 @@ Bookmarks are powered by Visual Studio App Centers User Data functionality, allo
 
 Don't just use Safari is you love Edge or another awesome browser! Azure News supports a variety of 3rd party browsers for viewing blog post content. By default you'll use the Embedded Safari option, which provides the ability to enable Reader mode. You can change your browser at any moment using the in-app settings, found in General > Browser. The app will display a list of installed browsers which are supported. 
 
-### Supported Browsers:
-* Brave
-* Chrome 
-* Dolphin 
-* Edge
-* Firefox
-* Safari 
-
  If your favourite browser isn't supported then don't fret! Create a Github issue to let me know and I'll get it added asap, or take a look at the simple implementation and create a pull request.
 
 ---
