@@ -59,7 +59,7 @@ Don't just use Safari is you love Edge or another awesome browser! Azure News su
 ## App Icons 
 Choose from 16 illustrated App Icons created by the amazing [Ashley McNamara](https://github.com/ashleymcnamara)!
 
-![App Icon Grid Array ](resources/appicons.png)
+![App Icon Grid Array ](resources/appIcons.png)
 
 
 
