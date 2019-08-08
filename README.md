@@ -23,7 +23,7 @@ Recieve push notifications in realtime as new blog posts are published. Tapping 
 
 Powered by Visual Studio App Center's Notification functionality, notifications are sent using the REST API, triggered from the codeless backend. It's also possible to segment users based on meta data collected through the analytics system for sending notifications to distinct groups of users. 
 
-## Authenitication 
+## Authentication 
 Sign in using your Microsoft, Github, LinkedIn or create a username and password. 
 
 Powered by App Center's authentication functionality, which itself uses Active-Directory B2C, the app can authenticate with a variety of 3rd party indentity providers. 
@@ -39,12 +39,25 @@ Bookmarks are powered by Visual Studio App Centers User Data functionality, allo
 
 ## Bring your own Broswer (BYOB)
 
-<a href="" target="_blank"><img align="left" src="resources/settings-browsers.png" width="266"/></a>
+<a href="" target="_blank"><img align="left" src="resources/settings-browsers.png" width="340"/></a>
 
 
 Don't just use Safari is you love Edge or another awesome browser! Azure News supports a variety of 3rd party browsers for viewing blog post content. By default you'll use the Embedded Safari option, which provides the ability to enable Reader mode. You can change your browser at any moment using the in-app settings, found in General > Browser. The app will display a list of installed browsers which are supported. 
 
  If your favourite browser isn't supported then don't fret! Create a Github issue to let me know and I'll get it added asap, or take a look at the simple implementation and create a pull request.
+
+### Supported Browsers
+Brave
+
+Chrome
+
+Dolphin
+
+Edge
+
+Firefox
+
+Safari
 
 ---
 
@@ -52,9 +65,6 @@ Don't just use Safari is you love Edge or another awesome browser! Azure News su
 Choose from 16 illustrated App Icons created by the amazing [Ashley McNamara](https://github.com/ashleymcnamara)!
 
 ![App Icon Grid Array ](resources/appIcons.png)
-
-
-
 
 # Powered by Azure & Visual Studio App Center
 
