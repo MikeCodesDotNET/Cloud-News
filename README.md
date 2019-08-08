@@ -33,9 +33,9 @@ Bookmarks are powered by Visual Studio App Centers User Data functionality, allo
 <a href="" target="_blank"><img align="left" src="resources/searchSuggestions.png" width="220"/></a>
 
 
-Search for blog posts using the integrated search functionality found in the Blog Post tab. When searching, the app will show intelligent suggestions, ignoring spelling mistakes and understanding similes. 
+Search for blog posts using the integrated search functionality found in the Blog Post tab. When searching, the app will show intelligent suggestions, ignoring spelling mistakes and understanding similes. You'll also see the UI will increase the contrast of hit, using hit-highlighting. 
 
-This functionality is powered by Azure Search, as managed Search as a Service, available from Microsoft. The app communicates directly with the service using its REST API, and the implementation can be found in the Services directory. This was done in increase performance, though the service is currently hosting in only 1 location (UK South). 
+This functionality is powered by Azure Search, a managed Search as a Service, available from Microsoft. Azure Search provides a search engine for the app data which can be easily integrated. The app communicates directly with the service using its REST API, and the Swift implementation can be found in the Services directory. This was done in increase performance, though the service is currently hosting in only 1 location (UK South). 
 
 You can learn more about Azure Search by exploring the [offical documentation](https://docs.microsoft.com/en-us/azure/search/) or get interactive with the [Introduction to Azure Search](https://docs.microsoft.com/en-us/learn/modules/intro-to-azure-search/) Microsoft Learn module. 
 
@@ -47,19 +47,6 @@ You can learn more about Azure Search by exploring the [offical documentation](h
 Don't just use Safari is you love Edge or another awesome browser! Azure News supports a variety of 3rd party browsers for viewing blog post content. By default you'll use the Embedded Safari option, which provides the ability to enable Reader mode. You can change your browser at any moment using the in-app settings, found in General > Browser. The app will display a list of installed browsers which are supported. 
 
  If your favourite browser isn't supported then don't fret! Create a Github issue to let me know and I'll get it added asap, or take a look at the simple implementation and create a pull request.
-
-### Supported Browsers
-Brave
-
-Chrome
-
-Dolphin
-
-Edge
-
-Firefox
-
-Safari
 
 ---
 
