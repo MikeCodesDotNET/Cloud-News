@@ -35,6 +35,14 @@ Authentication occurs using a simple API provided by the App Center iOS SDK, whi
 Bookmark your favourite blog posts for later. 
 Bookmarks are powered by Visual Studio App Centers User Data functionality, allowing for storing and sync bookmarks accross authenticated devices. 
 
+## Search
+
+<a href="" target="_blank"><img align="left" src="resources/searchSuggestions.png" width="340"/></a>
+
+
+Search for blog posts using the integrated search functionality. To help you find the content you're looking for, the app implements search suggestions, powered by Azure Search. 
+
+The suggestions show possible matches within the database, to save 
 
 
 ## Bring your own Broswer (BYOB)
