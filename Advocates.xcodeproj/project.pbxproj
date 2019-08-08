@@ -69,7 +69,6 @@
 		9C3FD02D22EF2D4E001988E0 /* UrlWriterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3FD02C22EF2D4E001988E0 /* UrlWriterService.swift */; };
 		9C3FD02F22EF4800001988E0 /* SettingsDefaultBrowserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3FD02E22EF4800001988E0 /* SettingsDefaultBrowserTableViewController.swift */; };
 		9C3FD03122EF4A2A001988E0 /* BrowserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C3FD03022EF4A2A001988E0 /* BrowserTableViewCell.swift */; };
-		9C4EE0AD22F0A948008C2CA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C4EE0AC22F0A948008C2CA7 /* Assets.xcassets */; };
 		9C64CEEC22E06B9800C94F9B /* AppColours.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64CEEB22E06B9800C94F9B /* AppColours.swift */; };
 		9C64CEEF22E0BF8900C94F9B /* TwitterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64CEEE22E0BF8900C94F9B /* TwitterService.swift */; };
 		9C64CEF122E0C02A00C94F9B /* SocialServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C64CEF022E0C02A00C94F9B /* SocialServiceProtocol.swift */; };
@@ -209,7 +208,6 @@
 		9C3FD02C22EF2D4E001988E0 /* UrlWriterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlWriterService.swift; sourceTree = "<group>"; };
 		9C3FD02E22EF4800001988E0 /* SettingsDefaultBrowserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDefaultBrowserTableViewController.swift; sourceTree = "<group>"; };
 		9C3FD03022EF4A2A001988E0 /* BrowserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserTableViewCell.swift; sourceTree = "<group>"; };
-		9C4EE0AC22F0A948008C2CA7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C64CEEB22E06B9800C94F9B /* AppColours.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColours.swift; sourceTree = "<group>"; };
 		9C64CEEE22E0BF8900C94F9B /* TwitterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterService.swift; sourceTree = "<group>"; };
 		9C64CEF022E0C02A00C94F9B /* SocialServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialServiceProtocol.swift; sourceTree = "<group>"; };
@@ -395,7 +393,6 @@
 				9C39257122AF962400BEEAD4 /* AppDelegate.swift */,
 				9CD5B9F522F04BD4002F5DD4 /* Settings.storyboard */,
 				9C39257722AF962400BEEAD4 /* Main.storyboard */,
-				9C4EE0AC22F0A948008C2CA7 /* Assets.xcassets */,
 				9C39257C22AF962600BEEAD4 /* LaunchScreen.storyboard */,
 				9C39257F22AF962600BEEAD4 /* Info.plist */,
 			);
@@ -732,7 +729,6 @@
 				9C8CE34722E4AF96003A7D6A /* SF-Mono-RegularItalic.otf in Resources */,
 				9C1FD97F22EA28590082823A /* Bit-Octocat@2x.png in Resources */,
 				9C8CE38622E4B190003A7D6A /* SF-Pro-Display-Black.otf in Resources */,
-				9C4EE0AD22F0A948008C2CA7 /* Assets.xcassets in Resources */,
 				9C39257922AF962400BEEAD4 /* Main.storyboard in Resources */,
 				9C8CE38522E4B190003A7D6A /* SF-Pro-Display-RegularItalic.otf in Resources */,
 				9C8CE37322E4B190003A7D6A /* SF-Pro-Display-HeavyItalic.otf in Resources */,
