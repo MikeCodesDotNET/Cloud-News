@@ -1,0 +1,11 @@
+ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher" "${PODS_CONFIGURATION_BUILD_DIR}/MarqueeLabel" "${PODS_CONFIGURATION_BUILD_DIR}/NotificationBannerSwift" "${PODS_CONFIGURATION_BUILD_DIR}/SPAlert" "${PODS_CONFIGURATION_BUILD_DIR}/SPStorkController" "${PODS_CONFIGURATION_BUILD_DIR}/SkeletonView" "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit" "${PODS_ROOT}/AppCenter/AppCenter-SDK-Apple/iOS"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/Kingfisher/Kingfisher.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/MarqueeLabel/MarqueeLabel.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/NotificationBannerSwift/NotificationBannerSwift.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SPAlert/SPAlert.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SPStorkController/SPStorkController.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SkeletonView/SkeletonView.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SnapKit/SnapKit.framework/Headers"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_LDFLAGS = $(inherited) -ObjC -l"c++" -l"sqlite3" -l"z" -framework "Accelerate" -framework "AppCenter" -framework "AppCenterAnalytics" -framework "AppCenterAuth" -framework "AppCenterCrashes" -framework "AppCenterData" -framework "AppCenterDistribute" -framework "AppCenterPush" -framework "CFNetwork" -framework "CoreTelephony" -framework "Foundation" -framework "Kingfisher" -framework "MarqueeLabel" -framework "NotificationBannerSwift" -framework "QuartzCore" -framework "SPAlert" -framework "SPStorkController" -framework "SkeletonView" -framework "SnapKit" -framework "SystemConfiguration" -framework "UIKit" -framework "WebKit" -weak_framework "AuthenticationServices" -weak_framework "SafariServices" -weak_framework "UserNotifications"
+OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
