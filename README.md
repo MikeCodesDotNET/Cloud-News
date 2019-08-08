@@ -25,8 +25,13 @@ Authentication occurs using a simple API provided by the App Center iOS SDK, whi
 
 ## Bookmarks 
 
-Bookmark your favourite blog posts for later. 
-Bookmarks are powered by Visual Studio App Centers User Data functionality, allowing for storing and sync bookmarks accross authenticated devices. 
+<a href="" target="_blank"><img align="left" src="resources/bookmark.png" width="250"/></a>
+
+Bookmark your favourite blog posts for reading later. 
+
+Bookmarks are powered by Visual Studio App Centers User Data functionality, allowing for bookmarks accross authenticated devices. 
+
+App Center provide an SDK which provides a simple API for interacting directly with Cosmos DB. User data is partitioned in such a way, which makes it only visible to the user who created the file. 
 
 ## Search
 
