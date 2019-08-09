@@ -9,6 +9,8 @@
 import UIKit
 import SafariServices
 import UserNotifications
+import CoreSpotlight
+import MobileCoreServices
 
 import AppCenter
 import AppCenterAuth
@@ -161,7 +163,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         
     }
     
-
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        if userActivity.activityType == CSSearchableItemActionType {
+            if let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
+                
+                //Download the item from App Center!
+                print("Downloading \(uniqueIdentifier) from App Center")
+                
+                MSData.read(withDocumentID: uniqueIdentifier, documentType: BlogPost.self, partition: kMSDataAppDocumentsPartition, completionHandler: { document in
+                    
+                    let blogPost = document.deserializedValue as! BlogPost
+                    
+                    let browserService = BrowsersService.init()
+                    browserService.openUrl(url: URL.init(string: blogPost.url)!)
+                })
+                
+            }
+        }
+    
+        return true
+    }
     
 
     func setupAppearance(){

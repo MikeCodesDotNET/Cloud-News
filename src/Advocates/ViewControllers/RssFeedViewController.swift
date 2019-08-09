@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 import SafariServices
+import CoreSpotlight
+import MobileCoreServices
 
 import SPStorkController
 import Kingfisher
@@ -381,10 +383,32 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             
             
             browserService.openUrl(url: url)
-            
+            saveToSpotlight(blogPost: blogPost)
         }
     }
     
+    
+    func saveToSpotlight(blogPost: BlogPost) {
+        
+        if(self.settingsService.spotlightIntegrationEnabled() == true){
+            
+            let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+            attributeSet.title = blogPost.title
+            attributeSet.thumbnailURL = URL.init(string: blogPost.primaryImage.contentUrl)
+            attributeSet.contentURL = URL.init(string: blogPost.url)
+            
+            let item = CSSearchableItem(uniqueIdentifier: blogPost.identifier, domainIdentifier: "com.mikecodesdotnet.advocates", attributeSet: attributeSet)
+            CSSearchableIndex.default().indexSearchableItems([item]) { error in
+                if let error = error {
+                    print("Indexing error: \(error.localizedDescription)")
+                } else {
+                    print("Search item successfully indexed!")
+                }
+            }
+            
+        }
+        
+    }
     
     //MARK: - Outlets
     @IBOutlet var searchBar: UISearchBar!
