@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import UserNotifications
 
 import AppCenter
 import AppCenterAuth
@@ -33,6 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
 
         setupApperance()
         
+        
+        //Used when testing authentication flow.
         //MSAuth.signOut()
         
        
@@ -66,6 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
+    
     func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
         
         //Handle push notifications
@@ -85,12 +89,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
             if item.key == "article" {
                 article = item.value
             }
+            
+            
         }
+        
+          if (UIApplication.shared.applicationState == .inactive) {
+            //app is transitioning from background to foreground (user taps notification), do what you need when user taps here
+            
+            let url = URL(string: "\(root)\(article)")
+            
+            let browserService = BrowsersService.init()
+            browserService.openUrl(url: url!)
+        }
+        
         
         
         if (UIApplication.shared.applicationState == .background) {
             
-           //  NSLog("Notification received in background, title: \"\(title)\", message: \"\(message)\", custom data: \"\(customData)\"");
+            //app is in background, if content-available key of your notification is set to 1, poll to your backend to retrieve data and update your interface here
+
+            
+             NSLog("Notification received in background, title: \"\(title)\", message: \"\(message)\", custom data: \"\(customData)\"");
             
         } else {
             
