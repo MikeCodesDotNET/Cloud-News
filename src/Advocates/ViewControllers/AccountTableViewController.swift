@@ -159,7 +159,7 @@ class AccountTableViewController: UITableViewController {
                        
                                 DispatchQueue.main.async {
                                     self.avatarImageView.kf.setImage(with: url)
-                                    self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.width / 2
+                                    self.avatarImageView.layer.cornerRadius = self.avatarImageView.frame.height / 2
                                     self.avatarImageView.layer.masksToBounds = true
                                 }
                             }.resume()
