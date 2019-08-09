@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27B48CC522FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B48CC422FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift */; };
 		27DB0D1422FC532000764DBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DB0D1322FC532000764DBF /* Assets.xcassets */; };
 		9407922B9AE14EEB4F35E61A /* Pods_Advocates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F2801104A3A0B2EB66A73F /* Pods_Advocates.framework */; };
 		9C1FD97B22EA28590082823A /* Bit-Xamarin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C1FD94B22EA284C0082823A /* Bit-Xamarin.png */; };
@@ -144,6 +145,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27B48CC422FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotificationsTableViewController.swift; sourceTree = "<group>"; };
 		27DB0D1322FC532000764DBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30566AC64868CC477A758825 /* Pods-Advocates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advocates.debug.xcconfig"; path = "Target Support Files/Pods-Advocates/Pods-Advocates.debug.xcconfig"; sourceTree = "<group>"; };
 		89F2801104A3A0B2EB66A73F /* Pods_Advocates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Advocates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -358,6 +360,7 @@
 				9C1FD9AB22EA28C10082823A /* SettingsAppIconViewController.swift */,
 				9C1FD9B222EB5E4B0082823A /* SettingsGeneralTableViewController.swift */,
 				9C3FD02E22EF4800001988E0 /* SettingsDefaultBrowserTableViewController.swift */,
+				27B48CC422FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				9C64CF0E22E0CE4D00C94F9B /* SearchSuggestionListViewCell.swift in Sources */,
 				9C64CEEF22E0BF8900C94F9B /* TwitterService.swift in Sources */,
 				9C3FD02B22EF0D13001988E0 /* ShareSheetTableViewController.swift in Sources */,
+				27B48CC522FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift in Sources */,
 				9C64CEF322E0C0E100C94F9B /* WhatsAppService.swift in Sources */,
 				9C64CF1A22E0CEBA00C94F9B /* FilterRssFeedViewController.swift in Sources */,
 				9C3FD02F22EF4800001988E0 /* SettingsDefaultBrowserTableViewController.swift in Sources */,
