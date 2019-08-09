@@ -102,6 +102,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
             browserService.openUrl(url: url!)
         }
         
+        if (UIApplication.shared.applicationState == .active) {
+            //app is transitioning from background to foreground (user taps notification), do what you need when user taps here
+            
+            let notiData = HDNotificationData(
+                iconImage: UIImage(named: "Icon"),
+                appTitle: "AZURE NEWS",
+                title: title,
+                message: message,
+                time: "now")
+            
+            
+            HDNotificationView.show(data: notiData, onTap: {
+                let url = URL(string: "\(root)\(article)")
+                
+                let browserService = BrowsersService.init()
+                browserService.openUrl(url: url!)
+            }, onDidDismiss: nil)
+
+        }
         
         
         if (UIApplication.shared.applicationState == .background) {

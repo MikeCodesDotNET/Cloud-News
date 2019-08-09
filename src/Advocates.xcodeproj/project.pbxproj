@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		27B48CC522FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B48CC422FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift */; };
+		27B48CC922FD820600DF0F5E /* HDNotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B48CC822FD820600DF0F5E /* HDNotificationData.swift */; };
+		27B48CCB22FD822B00DF0F5E /* HDNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B48CCA22FD822B00DF0F5E /* HDNotificationView.swift */; };
+		27B48CCD22FD824600DF0F5E /* HDNotificationViewAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B48CCC22FD824600DF0F5E /* HDNotificationViewAppearance.swift */; };
 		27DB0D1422FC532000764DBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27DB0D1322FC532000764DBF /* Assets.xcassets */; };
 		9407922B9AE14EEB4F35E61A /* Pods_Advocates.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89F2801104A3A0B2EB66A73F /* Pods_Advocates.framework */; };
 		9C1FD97B22EA28590082823A /* Bit-Xamarin.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C1FD94B22EA284C0082823A /* Bit-Xamarin.png */; };
@@ -146,6 +149,9 @@
 
 /* Begin PBXFileReference section */
 		27B48CC422FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotificationsTableViewController.swift; sourceTree = "<group>"; };
+		27B48CC822FD820600DF0F5E /* HDNotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDNotificationData.swift; sourceTree = "<group>"; };
+		27B48CCA22FD822B00DF0F5E /* HDNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDNotificationView.swift; sourceTree = "<group>"; };
+		27B48CCC22FD824600DF0F5E /* HDNotificationViewAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDNotificationViewAppearance.swift; sourceTree = "<group>"; };
 		27DB0D1322FC532000764DBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		30566AC64868CC477A758825 /* Pods-Advocates.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Advocates.debug.xcconfig"; path = "Target Support Files/Pods-Advocates/Pods-Advocates.debug.xcconfig"; sourceTree = "<group>"; };
 		89F2801104A3A0B2EB66A73F /* Pods_Advocates.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Advocates.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -299,6 +305,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27B48CC722FD81EB00DF0F5E /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				27B48CC822FD820600DF0F5E /* HDNotificationData.swift */,
+				27B48CCA22FD822B00DF0F5E /* HDNotificationView.swift */,
+				27B48CCC22FD824600DF0F5E /* HDNotificationViewAppearance.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		9C1FD94A22EA283A0082823A /* AppIcons */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,6 +580,7 @@
 		9CD59ED222DF739700968AA4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				27B48CC722FD81EB00DF0F5E /* Notifications */,
 				9C64CEFC22E0CE2C00C94F9B /* Search */,
 				9CD59ED522DF822000968AA4 /* BlogPostTableViewCell.swift */,
 				9C1FD9AD22EB1D070082823A /* AppIconTableViewCell.swift */,
@@ -843,6 +860,7 @@
 				9C3FD02D22EF2D4E001988E0 /* UrlWriterService.swift in Sources */,
 				9CD59ECE22DF573A00968AA4 /* RssFeedViewModel.swift in Sources */,
 				9CD59ED622DF822000968AA4 /* BlogPostTableViewCell.swift in Sources */,
+				27B48CC922FD820600DF0F5E /* HDNotificationData.swift in Sources */,
 				9C64CEEC22E06B9800C94F9B /* AppColours.swift in Sources */,
 				9C64CF0E22E0CE4D00C94F9B /* SearchSuggestionListViewCell.swift in Sources */,
 				9C64CEEF22E0BF8900C94F9B /* TwitterService.swift in Sources */,
@@ -850,6 +868,8 @@
 				27B48CC522FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift in Sources */,
 				9C64CEF322E0C0E100C94F9B /* WhatsAppService.swift in Sources */,
 				9C64CF1A22E0CEBA00C94F9B /* FilterRssFeedViewController.swift in Sources */,
+				27B48CCD22FD824600DF0F5E /* HDNotificationViewAppearance.swift in Sources */,
+				27B48CCB22FD822B00DF0F5E /* HDNotificationView.swift in Sources */,
 				9C3FD02F22EF4800001988E0 /* SettingsDefaultBrowserTableViewController.swift in Sources */,
 				9C64CF1522E0CE4D00C94F9B /* SearchSuggestionsTableView.swift in Sources */,
 				9C64CF1F22E1BF3E00C94F9B /* SearchService.swift in Sources */,
