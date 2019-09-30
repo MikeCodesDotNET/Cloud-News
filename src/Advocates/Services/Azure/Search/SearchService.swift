@@ -14,8 +14,7 @@ class SearchService {
     private var pref: UserDefaults!
     private let baseUrl: String
     private let apiVersion = "2019-05-06"
-    
-    
+
     init(indexName: String) {
         
         pref = UserDefaults.standard
@@ -24,7 +23,6 @@ class SearchService {
     
     
     // MARK: - Azure Search HTTP API
-    
     func suggest(query: String, completion: @escaping ([SearchResult]) -> Void) {
     
         //Azure Searchrequest URL length cannot exceed 8 KB so its safer to query using a POST request to put our query in the body.

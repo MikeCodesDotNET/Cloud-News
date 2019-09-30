@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import NotificationBannerSwift
 
 struct AppColours {
     
@@ -20,24 +19,3 @@ struct AppColours {
 }
 
 
-//Notification Banner Header
-class InAppBannerColours : BannerColorsProtocol {
-    
-    let colours = AppColours()
-    
-    internal func color(for style: BannerStyle) -> UIColor {
-        switch style {
-        case .danger:
-            return colours.danger
-        case .info:
-            return colours.info
-        case .none:
-            return colours.clear
-        case .success:
-            return colours.success
-        case .warning:
-            return colours.warning
-        }
-    }
-    
-}

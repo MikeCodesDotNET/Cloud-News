@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27AFAA8C233D590C00F9B23A /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 27AFAA8B233D590C00F9B23A /* Podfile */; };
 		27B48CC522FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B48CC422FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift */; };
 		27B48CC922FD820600DF0F5E /* HDNotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B48CC822FD820600DF0F5E /* HDNotificationData.swift */; };
 		27B48CCB22FD822B00DF0F5E /* HDNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B48CCA22FD822B00DF0F5E /* HDNotificationView.swift */; };
@@ -148,6 +149,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27AFAA8B233D590C00F9B23A /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		27B48CC422FD745A00DF0F5E /* SettingsNotificationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsNotificationsTableViewController.swift; sourceTree = "<group>"; };
 		27B48CC822FD820600DF0F5E /* HDNotificationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDNotificationData.swift; sourceTree = "<group>"; };
 		27B48CCA22FD822B00DF0F5E /* HDNotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HDNotificationView.swift; sourceTree = "<group>"; };
@@ -384,6 +386,7 @@
 		9C39256522AF962400BEEAD4 = {
 			isa = PBXGroup;
 			children = (
+				27AFAA8B233D590C00F9B23A /* Podfile */,
 				9C39257022AF962400BEEAD4 /* Advocates */,
 				9C39256F22AF962400BEEAD4 /* Products */,
 				A65904E2F0AABAA66E650EBA /* Pods */,
@@ -693,6 +696,7 @@
 				9C1FD99F22EA28590082823A /* AppIcon-8Bit.png in Resources */,
 				9C1FD99522EA28590082823A /* Bit_Sandbox.png in Resources */,
 				9C1FD98D22EA28590082823A /* Bit-VSCode@2x.png in Resources */,
+				27AFAA8C233D590C00F9B23A /* Podfile in Resources */,
 				9C8CE39122E4B190003A7D6A /* SF-Pro-Text-UltralightItalic.otf in Resources */,
 				9C1FD97E22EA28590082823A /* Bit-ML@2x.png in Resources */,
 				9C8CE34122E4AF96003A7D6A /* SF-Mono-HeavyItalic.otf in Resources */,

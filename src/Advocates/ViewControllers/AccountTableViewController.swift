@@ -227,7 +227,7 @@ class AccountTableViewController: UITableViewController {
         
         let width = self.view.frame.width
         
-        var avatarImageViewRect = CGRect.init(x: 0, y: Int(contentOffset), width: Int(width), height: headerViewHeight)
+        let avatarImageViewRect = CGRect.init(x: 0, y: Int(contentOffset), width: Int(width), height: headerViewHeight)
         
         if(Int(tableView.contentOffset.y) <= headerViewHeight){
             avatarImageView.frame.origin = CGPoint.init(x: avatarImageViewRect.origin.x, y: avatarImageViewRect.origin.y)
