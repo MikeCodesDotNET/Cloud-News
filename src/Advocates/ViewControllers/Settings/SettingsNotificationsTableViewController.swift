@@ -18,6 +18,7 @@ class SettingsNotificationsTableViewController : UITableViewController {
         let notificationsEnabled = MSPush.isEnabled()
         if(notificationsEnabled == true){
             notificationsSwitch.isOn = true
+
         } else {
             notificationsSwitch.isOn = false
         }

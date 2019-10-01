@@ -12,6 +12,8 @@ import SafariServices
 import CoreSpotlight
 import MobileCoreServices
 
+import AppCenterAnalytics
+
 import SPStorkController
 import Kingfisher
 
@@ -375,7 +377,9 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             present(vc, animated: true)
  */
             
-            
+            let properties = ["Title" : blogPost.title, "URL" : blogPost.url];
+            MSAnalytics.trackEvent("Blog Post Tapped", withProperties: properties)
+
             browserService.openUrl(url: url)
             saveToSpotlight(blogPost: blogPost)
         }

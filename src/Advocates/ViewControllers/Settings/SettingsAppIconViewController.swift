@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AppCenterAnalytics
 
 class SettingsAppIconViewController : UITableViewController {
 
@@ -87,8 +88,9 @@ class SettingsAppIconViewController : UITableViewController {
             selectedCell?.accessoryType = UITableViewCell.AccessoryType.checkmark
             UserDefaults.standard.setValue(selectedIcon.imageName, forKey: "AppIcon")
         
-        
-        
+            let properties = ["Name" : selectedIcon.displayName];
+            MSAnalytics.trackEvent("App Icon Changed", withProperties: properties)
+
             UIApplication.shared.setAlternateIconName(selectedIcon.imageName, completionHandler: {   (error) in
                 
                 if error != nil {
