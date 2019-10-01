@@ -377,7 +377,7 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             present(vc, animated: true)
  */
             
-            let properties = ["Title" : blogPost.title, "URL" : blogPost.url];
+            let properties = ["Title" : blogPost.title];
             MSAnalytics.trackEvent("Blog Post Tapped", withProperties: properties)
 
             browserService.openUrl(url: url)
