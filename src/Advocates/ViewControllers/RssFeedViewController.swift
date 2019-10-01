@@ -38,11 +38,9 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             config.entersReaderIfAvailable = true
             config.barCollapsingEnabled = true
             
-             let vc = SFSafariViewController(url: url, configuration: config )
-            
+            let vc = SFSafariViewController(url: url, configuration: config )
             return vc
         }
-        
         return nil
     }
     
@@ -257,16 +255,12 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         filterButton.setImage(UIImage(named: "filter"), for: .normal)
         navigationController?.navigationBar.tintColor = AppColours().info
         registerForPreviewing(with: self, sourceView: tableView)
-
-        
         
         //Dismis keyboard on none-text entry tap
         let tap: UITapGestureRecognizer =     UITapGestureRecognizer(target: self, action:    #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.navigationController?.navigationBar.addGestureRecognizer(tap)
 
-        
-        
         viewModel.refresh(completionHandler: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()

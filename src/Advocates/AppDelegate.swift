@@ -34,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
 
         MSAppCenter.start(Constants.AppCenter.apiKey, withServices: [MSDistribute.self, MSCrashes.self, MSAuth.self, MSData.self, MSPush.self, MSAnalytics.self])
 
+
         setupApperance()
         
         
@@ -114,7 +115,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
                 message: message,
                 time: "now")
             
-            
             HDNotificationView.show(data: notiData, onTap: {
                 let url = URL(string: "\(root)\(article)")
                 
@@ -128,7 +128,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         if (UIApplication.shared.applicationState == .background) {
             
             //app is in background, if content-available key of your notification is set to 1, poll to your backend to retrieve data and update your interface here
-
             
              NSLog("Notification received in background, title: \"\(title)\", message: \"\(message)\", custom data: \"\(customData)\"");
             
@@ -182,6 +181,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         }
     
         return true
+    }
+    
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+
+      // Pass the URL to MSAuth.
+      return MSAuth.open(url)
     }
     
 

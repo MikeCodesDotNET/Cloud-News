@@ -12,7 +12,7 @@ import UIKit
 class Constants {
     
     class AppCenter {
-        static let apiKey = "4ca57f22-2f67-4066-ba0d-3e6f6c86e4a8"
+        static let apiKey = "913e6960-3963-4760-8b50-68b551406c24"
     }
     
     class AzureSearch {

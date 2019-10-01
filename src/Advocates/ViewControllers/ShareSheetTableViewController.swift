@@ -54,12 +54,14 @@ class ShareSheetTableViewController : UITableViewController {
                             SPAlert.present(title: "Saved", preset: .heart)
                         }
                     } else {
-                        // log it
+                        print(document.error)
                     }
+                   
                 })
+                
             }
             else {
-               //log it
+               
             }
         }
 
