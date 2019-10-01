@@ -183,14 +183,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         return true
     }
     
-    
-    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-
-      // Pass the URL to MSAuth.
-      return MSAuth.open(url)
-    }
-    
-
     func setupAppearance(){
         
         //Tabbar
