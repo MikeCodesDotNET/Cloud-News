@@ -9,7 +9,7 @@
 import Foundation
 import AppCenterData
 
-class BlogPost : NSObject, MSSerializableDocument    {
+class BlogPost: NSObject, MSSerializableDocument {
     
     var title: String
     var isFamilyFriendly: Bool
@@ -20,10 +20,10 @@ class BlogPost : NSObject, MSSerializableDocument    {
     var identifier: String
     var source: String
     
-    required public init(from dictionary: [AnyHashable : Any]) {
+    required public init(from dictionary: [AnyHashable: Any]) {
         self.title = dictionary["title"] as! String
         self.isFamilyFriendly = dictionary["isFamilyFriendly"] as! Bool
-        self.primaryImage = PrimaryImage.init(from: dictionary["primaryImage"] as! [AnyHashable : Any] )
+        self.primaryImage = PrimaryImage.init(from: dictionary["primaryImage"] as! [AnyHashable: Any] )
         //self.summary = dictionary["summary"] as! String
         self.url = dictionary["url"] as! String
         self.classType = dictionary["classType"] as! String
@@ -31,7 +31,6 @@ class BlogPost : NSObject, MSSerializableDocument    {
         self.source = dictionary["source"] as! String
 
     }
-    
    
     init(title: String, url: String, source: String, identifier: String) {
         self.title = title
@@ -45,8 +44,7 @@ class BlogPost : NSObject, MSSerializableDocument    {
         
     }
     
-    
-    public func serializeToDictionary() -> [AnyHashable : Any] {
+    public func serializeToDictionary() -> [AnyHashable: Any] {
         return ["title": self.title,
                 "isFamilyFriendly": self.isFamilyFriendly,
                 "primaryImage": self.primaryImage,
@@ -59,15 +57,15 @@ class BlogPost : NSObject, MSSerializableDocument    {
 
 }
 
-class PrimaryImage : NSObject, MSSerializableDocument {
+class PrimaryImage: NSObject, MSSerializableDocument {
     
     let contentUrl: String
     
-    required public init(from dictionary: [AnyHashable : Any]) {
+    required public init(from dictionary: [AnyHashable: Any]) {
          self.contentUrl = dictionary["contentUrl"] as! String
     }
     
-    public func serializeToDictionary() -> [AnyHashable : Any] {
+    public func serializeToDictionary() -> [AnyHashable: Any] {
         return ["contentUrl": self.contentUrl]
     }
     

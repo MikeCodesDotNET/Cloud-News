@@ -10,8 +10,7 @@ import Foundation
 import UIKit
 import AppCenterAnalytics
 
-class SettingsAppIconViewController : UITableViewController {
-
+class SettingsAppIconViewController: UITableViewController {
     
     var iconItems: [(imageName: String, displayName: String)] = []
     var selectedIconName: String?
@@ -35,24 +34,27 @@ class SettingsAppIconViewController : UITableViewController {
         iconItems.append((imageName: "Bit-Xamarin", displayName: "Bit & Xamarin Monkey"))
         iconItems.append((imageName: "Bit_Pride", displayName: "Pride"))
         iconItems.append((imageName: "javascript", displayName: "JavaScript"))
-        
      
         selectedIconName = UserDefaults.standard.value(forKey: "AppIcon") as? String
 
     }
     
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return iconItems.count
     }
-    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let item = iconItems[indexPath.row]
         
-        let appIconCell = tableView.dequeueReusableCell(withIdentifier: "AppIconTableViewCell", for: indexPath) as! AppIconTableViewCell
-    
+        guard let appIconCell = tableView.dequeueReusableCell(
+            withIdentifier: "AppIconTableViewCell",
+            for: indexPath) as? AppIconTableViewCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        
+        
         appIconCell.titleLabel?.text = item.displayName
         appIconCell.appIcon.image = UIImage.init(named: item.imageName)
         
@@ -63,10 +65,8 @@ class SettingsAppIconViewController : UITableViewController {
             previousSelectionIndex = indexPath
         }
         
-        
         return appIconCell
     }
-   
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
    
@@ -88,7 +88,7 @@ class SettingsAppIconViewController : UITableViewController {
             selectedCell?.accessoryType = UITableViewCell.AccessoryType.checkmark
             UserDefaults.standard.setValue(selectedIcon.imageName, forKey: "AppIcon")
         
-            let properties = ["Name" : selectedIcon.displayName];
+            let properties = ["Name": selectedIcon.displayName]
             MSAnalytics.trackEvent("App Icon Changed", withProperties: properties)
 
             UIApplication.shared.setAlternateIconName(selectedIcon.imageName, completionHandler: {   (error) in
@@ -105,4 +105,3 @@ class SettingsAppIconViewController : UITableViewController {
         
 }
     
-

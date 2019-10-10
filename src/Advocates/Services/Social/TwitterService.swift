@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-class TwitterService : SocialServiceProtocol {
+class TwitterService: SocialServiceProtocol {
     
     static var isSetApp: Bool {
         return UIApplication.shared.canOpenURL(URL(string: "twitter://post?message=test")!)
     }
     
-    static func share(text: String, complection: @escaping (_ isOpened: Bool)->() = {_ in }) {
+    static func share(text: String, complection: @escaping (_ isOpened: Bool)->Void = {_ in }) {
         let urlStringEncoded = text.addingPercentEncoding( withAllowedCharacters: .urlHostAllowed)
         let urlOptional = URL(string: "twitter://post?message=\(urlStringEncoded ?? "")")
         if let url = urlOptional {
@@ -33,6 +33,6 @@ class TwitterService : SocialServiceProtocol {
 
 }
 
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+private func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
     return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

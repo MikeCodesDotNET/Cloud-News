@@ -11,19 +11,18 @@ import UIKit
 
 import AppCenterPush
 
-class SettingsNotificationsTableViewController : UITableViewController {
+class SettingsNotificationsTableViewController: UITableViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
         let notificationsEnabled = MSPush.isEnabled()
-        if(notificationsEnabled == true){
+        if(notificationsEnabled == true) {
             notificationsSwitch.isOn = true
 
         } else {
             notificationsSwitch.isOn = false
         }
     }
-    
     
     @IBOutlet weak var notificationsSwitch: UISwitch!
     

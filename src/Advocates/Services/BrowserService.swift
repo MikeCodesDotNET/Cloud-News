@@ -19,13 +19,12 @@ class BrowsersService {
     private let edge = "microsoft-edge-https://"
     private let opera = "touch-http"
     private let safari = ""
-   
     
-    func openUrl(url: URL){
+    func openUrl(url: URL) {
        
-        if(settingsService.defaultBrowser() == .safariViewController){
+        if(settingsService.defaultBrowser() == .safariViewController) {
             let config = SFSafariViewController.Configuration()
-            if(settingsService.readerModeEnabled() == true ){
+            if(settingsService.readerModeEnabled() == true ) {
                 config.entersReaderIfAvailable = true
                 config.barCollapsingEnabled = true
             }
@@ -40,7 +39,6 @@ class BrowsersService {
         
         var installed = [Browser]()
         
-        
         for browser in Browser.allCases {
             
             if(isInstalled(browser: browser) == true) {
@@ -48,7 +46,6 @@ class BrowsersService {
             }
             
         }
-        
     
         return installed
     }
@@ -77,13 +74,13 @@ class BrowsersService {
 
         case .edge:
             tmp2Url = URL.init(string: "\(edge)\(tmpUrl)")!
-            break;
+            break
 
         case .safariViewController:
-            break;
+            break
 
         case .firefoxFocus:
-            break;
+            break
         }
         
         return tmp2Url
@@ -94,7 +91,7 @@ class BrowsersService {
         let testDestination: String = "www.microsoft.com"
         var testLink: String = ""
         
-        switch(browser){
+        switch(browser) {
             case .brave:
                 testLink = "\(brave)\(testDestination)"
                 break
@@ -133,8 +130,7 @@ class BrowsersService {
     
 }
 
-
-public enum Browser : CaseIterable{
+public enum Browser: CaseIterable {
     case brave
     case chrome
     case dolphin

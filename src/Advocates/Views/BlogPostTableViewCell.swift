@@ -9,10 +9,9 @@
 import Foundation
 import UIKit
 
-class BlogPostTableViewCell : UITableViewCell {
+class BlogPostTableViewCell: UITableViewCell {
     
-    
-    var moreButtonAction : (() -> ())?
+    var moreButtonAction : (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,7 +24,7 @@ class BlogPostTableViewCell : UITableViewCell {
     @IBOutlet var sourceLabel: UILabel!
     @IBOutlet var moreButton: UIButton!
     
-    @IBAction func moreButtonTapped(_ sender: UIButton){
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
         // if the closure is defined (not nil)
         // then execute the code inside the subscribeButtonAction closure
         moreButtonAction?()

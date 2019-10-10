@@ -9,7 +9,6 @@
 import Foundation
 import AppCenterData
 
-
 class RssFeedViewModel {
     
     private var preSearchPosts: [BlogPost] = []
@@ -17,22 +16,25 @@ class RssFeedViewModel {
     var blogPosts: [BlogPost] = []
     var suggestions: [SearchResult] = []
     
-    func refresh(completionHandler: @escaping () -> ()){
+    func refresh(completionHandler: @escaping () -> Void) {
         self.blogPosts.removeAll()
         
         MSData.listDocuments(withType: BlogPost.self, partition: kMSDataAppDocumentsPartition, completionHandler: { documents in
             for document in documents.currentPage().items {
-                var fetchedDocument: BlogPost
-                fetchedDocument = document.deserializedValue as! BlogPost
+          
+                guard let fetchedDocument = document.deserializedValue as? BlogPost
+                    else {
+                        fatalError()
+                }
                 self.blogPosts.append(fetchedDocument)
+                
             }
             self.blogPosts = self.blogPosts.reversed()
             completionHandler()
         })
     }
-
     
-    func suggest(searchTerm: String, completionHandler: @escaping () -> ()){
+    func suggest(searchTerm: String, completionHandler: @escaping () -> Void) {
     
         searchService.suggest(query: searchTerm, completion: { results in
             self.suggestions.removeAll(keepingCapacity: false)
@@ -41,8 +43,6 @@ class RssFeedViewModel {
         })
     }
     
-    
     private let searchService = SearchService.init(indexName: "blog-posts")
-    
    
 }

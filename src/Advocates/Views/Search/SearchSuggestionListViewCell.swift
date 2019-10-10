@@ -6,7 +6,6 @@
 //  Copyright © 2019 Mike James. All rights reserved.
 //
 
-
 import UIKit
 
 class SearchSuggestionListViewCell: UITableViewCell {
@@ -34,6 +33,5 @@ class SearchSuggestionListViewCell: UITableViewCell {
         self.searchLabel.font = UIFont(name: "Avenir-Medium", size: 14)
         self.addSubview(searchLabel)
     }
-    
     
 }

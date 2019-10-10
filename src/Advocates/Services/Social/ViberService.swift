@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-class ViberService : SocialServiceProtocol {
+class ViberService: SocialServiceProtocol {
     
     static var isSetApp: Bool {
         return UIApplication.shared.canOpenURL(URL(string: "viber://forward?text=test")!)
     }
     
-    static func share(text: String, complection: @escaping (_ isOpened: Bool)->() = {_ in }) {
+    static func share(text: String, complection: @escaping (_ isOpened: Bool)->Void = {_ in }) {
         let urlStringEncoded = text.addingPercentEncoding( withAllowedCharacters: .urlHostAllowed)
         let urlOptional = URL(string: "viber://forward?text=\(urlStringEncoded ?? "")")
         if let url = urlOptional {
@@ -32,6 +32,6 @@ class ViberService : SocialServiceProtocol {
     private init() {}
 }
 
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+private func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
     return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

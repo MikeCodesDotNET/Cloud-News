@@ -15,9 +15,7 @@ import typealias CommonCrypto.CC_LONG
 
 class GravatarService {
     
-    
-    func gravatarUrlForEmail(emailString: String) -> URL
-    {
+    func gravatarUrlForEmail(emailString: String) -> URL {
         let email = emailString.lowercased()
         let md5Data = MD5(string: email)
         let md5Hex =  md5Data.map { String(format: "%02hhx", $0) }.joined()
@@ -26,10 +24,9 @@ class GravatarService {
         return url
     }
     
-    
     private func MD5(string: String) -> Data {
         let length = Int(CC_MD5_DIGEST_LENGTH)
-        let messageData = string.data(using:.utf8)!
+        let messageData = string.data(using: .utf8)!
         var digestData = Data(count: length)
         
         _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
@@ -43,7 +40,6 @@ class GravatarService {
         }
         return digestData
     }
-    
     
     struct Root: Codable {
         let entry: [Entry]
@@ -71,4 +67,3 @@ class GravatarService {
         let type: String
     }
 }
-

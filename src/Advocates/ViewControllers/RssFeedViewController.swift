@@ -17,12 +17,11 @@ import AppCenterAnalytics
 import SPStorkController
 import Kingfisher
 
-class RssFeedViewController : UITableViewController, UIViewControllerPreviewingDelegate, UISearchBarDelegate {
+class RssFeedViewController: UITableViewController, UIViewControllerPreviewingDelegate, UISearchBarDelegate {
     
     private let filterButton = UIButton.init(type: .custom)
     private var shoulResize: Bool?
     private var suggestsionsTableView = SearchSuggestionsTableView.init()
-
     
     // MARK: - Peek & Pop Preview
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
@@ -50,7 +49,6 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         present(viewControllerToCommit, animated: true)
     }
     
-    
     // MARK: - UITextFieldDelegate for SearchBar
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         return true
@@ -64,7 +62,7 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         //Animate the hiding of the search suggestions
         UIView.animate(withDuration: 0.3, animations: {
             self.suggestsionsTableView.alpha = 0
-        }, completion: { result in
+        }, completion: { _ in
             self.suggestsionsTableView.initData(database: [SearchResult]())
             self.suggestsionsTableView.removeFromSuperview()
             self.dismissKeyboard()
@@ -85,7 +83,7 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         //Animate the hiding of the search suggestions
         UIView.animate(withDuration: 0.3, animations: {
             self.suggestsionsTableView.alpha = 0
-        }, completion: { result in
+        }, completion: { _ in
             self.suggestsionsTableView.removeFromSuperview()
             self.dismissKeyboard()
         })
@@ -105,17 +103,13 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             self.suggestsionsTableView.initData(database: [SearchResult]())
             UIView.animate(withDuration: 0.3, animations: {
                 self.suggestsionsTableView.alpha = 0
-            }, completion: { result in
+            }, completion: { _ in
                 self.suggestsionsTableView.removeFromSuperview()
                 self.dismissKeyboard()
             })
         }
-    
-        
-                
         
     }
-    
     
     // MARK: - Filter Button
     private func resizeImageForLandscape() {
@@ -181,7 +175,6 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         }
         presentAsStork(vc!, height: CGFloat.init(350))
         
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -193,10 +186,8 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             tableView.separatorStyle = UITableViewCell.SeparatorStyle.singleLine
         }
         
-        
         tableView.reloadData()
     }
-    
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard let shoulResize = shoulResize
@@ -212,11 +203,9 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if(useLargeCells == true)
-        {
+        if(useLargeCells == true) {
             return 280
-        }
-        else {
+        } else {
             return 110
         }
     }
@@ -259,7 +248,7 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         registerForPreviewing(with: self, sourceView: tableView)
         
         //Dismis keyboard on none-text entry tap
-        let tap: UITapGestureRecognizer =     UITapGestureRecognizer(target: self, action:    #selector(dismissKeyboard))
+        let tap: UITapGestureRecognizer =     UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap.cancelsTouchesInView = false
         self.navigationController?.navigationBar.addGestureRecognizer(tap)
 
@@ -269,10 +258,7 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             }
         })
         
-        
-        filterButton.addTarget(self, action:#selector(self.filterButtonTouchedUpInside), for: .touchUpInside)
-
-       
+        filterButton.addTarget(self, action: #selector(self.filterButtonTouchedUpInside), for: .touchUpInside)
         
         if UIDevice.current.orientation.isPortrait {
             shoulResize = true
@@ -294,7 +280,6 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             filterButton.widthAnchor.constraint(equalTo: filterButton.heightAnchor)
             ])
         
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -306,10 +291,6 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             moveAndResizeImageForPortrait()
         }
     }
-
-    
-   
-    
     
     // MARK: - UITableViewController Overrides
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -320,28 +301,45 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         return viewModel.blogPosts.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell: BlogPostTableViewCell
-        if useLargeCells == true {
-            cell = tableView.dequeueReusableCell(withIdentifier: "largePostCell", for: indexPath) as! BlogPostTableViewCell
 
-        }else{
-            cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! BlogPostTableViewCell
-        }
+        if useLargeCells == true {
         
+            guard let largeCell = tableView.dequeueReusableCell(
+                withIdentifier: "largePostCell",
+                for: indexPath) as? BlogPostTableViewCell
+            else {
+                fatalError("DequeueReusableCell failed while casting")
+            }
+            
+            cell = largeCell
+
+        } else {
+            guard let smallCell = tableView.dequeueReusableCell(
+                withIdentifier: "postCell",
+                for: indexPath) as? BlogPostTableViewCell
+            else {
+                fatalError("DequeueReusableCell failed while casting")
+            }
+            
+            cell = smallCell
+        }
+                
         let blogPost = viewModel.blogPosts[indexPath.row]
         
         cell.moreButtonAction = { [unowned self] in
-            let vc = self.storyboard?.instantiateViewController(withIdentifier: "shareSheet") as! ShareSheetTableViewController
             
-            vc.blogPost = blogPost
-            self.presentAsStork(vc, height: 270)
+            guard let shareSheetVc = self.storyboard?.instantiateViewController(withIdentifier: "shareSheet") as? ShareSheetTableViewController
+                else {
+                    fatalError()
+            }
+                        
+            shareSheetVc.blogPost = blogPost
+            self.presentAsStork(shareSheetVc, height: 270)
             
         }
-        
-        
         
         let url = URL(string: blogPost.primaryImage.contentUrl)
         cell.primaryImageView.kf.setImage(with: url, options: [.transition(.fade(0.5))])
@@ -358,11 +356,8 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         cell.sourceLabel.text = blogPost.source
         return cell
     }
-    
    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        
         
         let blogPost = viewModel.blogPosts[indexPath.row]
         if let url = URL(string: blogPost.url) {
@@ -377,7 +372,7 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
             present(vc, animated: true)
  */
             
-            let properties = ["Title" : blogPost.title];
+            let properties = ["Title": blogPost.title]
             MSAnalytics.trackEvent("Blog Post Tapped", withProperties: properties)
 
             browserService.openUrl(url: url)
@@ -385,10 +380,9 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         }
     }
     
-    
     func saveToSpotlight(blogPost: BlogPost) {
         
-        if(self.settingsService.spotlightIntegrationEnabled() == true){
+        if(self.settingsService.spotlightIntegrationEnabled() == true) {
             
             let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
             attributeSet.title = blogPost.title
@@ -408,10 +402,8 @@ class RssFeedViewController : UITableViewController, UIViewControllerPreviewingD
         
     }
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet var searchBar: UISearchBar!
-    
-    
     
     // MARK: - Fields
     let viewModel = RssFeedViewModel()

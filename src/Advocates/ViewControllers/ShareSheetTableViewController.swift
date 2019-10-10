@@ -14,10 +14,9 @@ import AppCenterAuth
 
 import SPAlert
 
-class ShareSheetTableViewController : UITableViewController {
+class ShareSheetTableViewController: UITableViewController {
     
     var blogPost: BlogPost?
-    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -36,37 +35,38 @@ class ShareSheetTableViewController : UITableViewController {
         
     }
     
-    func bookmarkPost(){
+    func bookmarkPost() {
        
         //Check the user is logged in!
-        MSAuth.signIn { userInformation, error in
+        MSAuth.signIn { _, error in
             
             if error == nil {
 
-                let id =  NSUUID().uuidString
-                let bookmark = Bookmark.init(identifier: id, title: self.blogPost!.title, url: self.blogPost!.url, source: self.blogPost!.source, blogPostId: self.blogPost!.identifier, primaryImage: self.blogPost!.primaryImage.contentUrl)
+                let identifier =  NSUUID().uuidString
+                let bookmark = Bookmark.init(identifier: identifier, title: self.blogPost!.title,
+                                             url: self.blogPost!.url, source: self.blogPost!.source,
+                                             blogPostId: self.blogPost!.identifier, primaryImage: self.blogPost!.primaryImage.contentUrl)
                 
-                MSData.create(withDocumentID: bookmark.identifier, document: bookmark.self, partition: kMSDataUserDocumentsPartition, completionHandler: { document in
-                    // Do something with the document
-                    
-                    if(document.error == nil){
-                        DispatchQueue.main.async {
-                            SPAlert.present(title: "Saved", preset: .heart)
-                        }
-                    } else {
-                        print(document.error)
-                    }
+                MSData.create(withDocumentID: bookmark.identifier, document: bookmark.self,
+                              partition: kMSDataUserDocumentsPartition,
+                              completionHandler: { document in
+                              // Do something with the document
+                                if document.error == nil {
+                                    DispatchQueue.main.async {
+                                        SPAlert.present(title: "Saved", preset: .heart)
+                                    }
+                                } else {
+                                    print(document.error)
+                                }
                    
                 })
                 
-            }
-            else {
+            } else {
                
             }
         }
 
         self.dismiss(animated: true, completion: ({}))
-        
        
     }
     
@@ -74,7 +74,7 @@ class ShareSheetTableViewController : UITableViewController {
     func share() {
         //Medium blog post urls appear to have some extra bits for tracking. In order to share, we remove this guff first.
         var url: URL?
-        if(blogPost?.source == "Medium.com"){
+        if blogPost?.source == "Medium.com" {
             let tempUrl = blogPost?.url.replacingOccurrences(of: "%3Fsource=rss----8bec1183ada9---4", with: "")
             
             url = urlWriterService.createTrackableLink(string: tempUrl!, sharableLink: true)
@@ -95,8 +95,6 @@ class ShareSheetTableViewController : UITableViewController {
     func report() {
         
     }
-    
-    
     
     let urlWriterService = UrlWriterService()
 }

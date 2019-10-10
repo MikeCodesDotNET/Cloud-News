@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-class AppIconTableViewCell : UITableViewCell {
-    
+class AppIconTableViewCell: UITableViewCell {
     
     @IBOutlet var appIcon: UIImageView!
     @IBOutlet var titleLabel: UILabel!

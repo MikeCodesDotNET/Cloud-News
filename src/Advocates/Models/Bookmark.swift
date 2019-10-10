@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import AppCenterData
 
-class Bookmark : NSObject, MSSerializableDocument    {
+class Bookmark: NSObject, MSSerializableDocument {
 
     var identifier: String
     var classType: String
@@ -20,7 +20,9 @@ class Bookmark : NSObject, MSSerializableDocument    {
     var blogPostId: String
     var primaryImage: String
     
-    required public init(from dictionary: [AnyHashable : Any]) {
+    required public init(from dictionary: [AnyHashable: Any]) {
+        
+
         self.classType = dictionary["classType"] as! String
         self.identifier = dictionary["identifier"] as! String
         self.title = dictionary["title"] as! String
@@ -30,7 +32,6 @@ class Bookmark : NSObject, MSSerializableDocument    {
         self.primaryImage = dictionary["primaryImage"] as! String
 
     }
-    
     
     init(identifier: String, title: String, url: String, source: String, blogPostId: String, primaryImage: String) {
       
@@ -43,7 +44,7 @@ class Bookmark : NSObject, MSSerializableDocument    {
         self.primaryImage = primaryImage
     } 
     
-    public func serializeToDictionary() -> [AnyHashable : Any] {
+    public func serializeToDictionary() -> [AnyHashable: Any] {
         
         return ["identifier": self.identifier,
                 "classType": self.classType,

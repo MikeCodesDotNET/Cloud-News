@@ -15,23 +15,26 @@ class SearchService {
     private let baseUrl: String
     private let apiVersion = "2019-05-06"
     
-    
     init(indexName: String) {
         
         pref = UserDefaults.standard
         self.baseUrl = "https://" + Constants.AzureSearch.serviceName + ".search.windows.net/indexes/" + indexName
     }
     
-    
     // MARK: - Azure Search HTTP API
     
     func suggest(query: String, completion: @escaping ([SearchResult]) -> Void) {
     
         //Azure Searchrequest URL length cannot exceed 8 KB so its safer to query using a POST request to put our query in the body.
-        let suggestionRequest = SuggestionRequest.init(fuzzy: true, minimumCoverage: 100, search: query, searchFields: "title", select: "title, description, url, source, id", suggesterName: "name")
+        let suggestionRequest = SuggestionRequest.init(fuzzy: true, minimumCoverage: 100, search: query,
+                                                       searchFields: "title", select: "title, description, url, source, id",
+                                                       suggesterName: "name")
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
+        
+        
         let encodedRequest = try! encoder.encode(suggestionRequest)
+     
     
         //Create query URL b
         let url = URL(string: "\(baseUrl)/docs/suggest?api-version=\(apiVersion)")!
@@ -122,8 +125,6 @@ class SearchService {
         task.resume()
     }
     
-    
-    
     // MARK: - Search History
     
     func setSearchHistories(value: [String]) {
@@ -139,8 +140,8 @@ class SearchService {
     
     func appendSearchHistories(value: String) {
         var histories = [String]()
-        if let _histories = pref.object(forKey: "histories") as? [String] {
-            histories = _histories
+        if let tempHistories = pref.object(forKey: "histories") as? [String] {
+            histories = tempHistories
         }
         histories.append(value)
         pref.set(histories, forKey: "histories")
@@ -153,10 +154,9 @@ class SearchService {
     
 }
 
-
 // MARK: - Search Response Models
 
-class SearchResultWrapper : Codable {
+class SearchResultWrapper: Codable {
     
     let odataContext: String
     let odataCount: Int?
@@ -178,8 +178,7 @@ class SearchResultWrapper : Codable {
     }
 }
 
-
-class SearchResult : Codable {
+class SearchResult: Codable {
     
     let searchScore: Double?
     let searchText: String?
@@ -211,7 +210,7 @@ class SearchResult : Codable {
     
 }
 
-class SearchRequest : Codable {
+class SearchRequest: Codable {
     
     let count: Bool
     let highlightPreTag: String
@@ -232,7 +231,7 @@ class SearchRequest : Codable {
     }
 }
 
-class SuggestionRequest : Codable {
+class SuggestionRequest: Codable {
     
     let fuzzy: Bool
     let highlightPreTag: String

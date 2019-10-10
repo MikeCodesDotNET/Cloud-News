@@ -23,8 +23,7 @@ class AccountTableViewController: UITableViewController {
     var bookmarks = [Bookmark]()
     let headerViewHeight = 100
     
-    
-    //MARK: - UIView Overrides
+    // MARK: - UIView Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -50,27 +49,30 @@ class AccountTableViewController: UITableViewController {
         }
     }
     
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         self.setupHeader(contentOffset: CGFloat.init())
     }
     
-    //MARK: - ScrollView Events
+    // MARK: - ScrollView Events
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         self.setupHeader(contentOffset: scrollView.contentOffset.y)
     }
     
-    
-    //MARK: - UITableView Overrides
+    // MARK: - UITableView Overrides
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.bookmarks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! BlogPostTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? BlogPostTableViewCell
+            else {
+                fatalError()
+        }
+        
+        
      
         let bookmark = self.bookmarks[indexPath.row]
         cell.titleLabel.text = bookmark.title
@@ -119,9 +121,8 @@ class AccountTableViewController: UITableViewController {
         }
     }
     
-    
-    //MARK: - Authentication
-    private func decodeToken(token: String){
+    // MARK: - Authentication
+    private func decodeToken(token: String) {
         
         let tokenSplit = token.components(separatedBy: ".")
         
@@ -150,12 +151,12 @@ class AccountTableViewController: UITableViewController {
                         
                         // Get email addresses.
                         let emails = claims!["emails"] as? [Any]
-                        if emails != nil && emails!.count > 0 {
+                        if emails != nil && emails!.isEmpty == false {
                             let firstEmail = emails![0] as? String
                             
                             // Use the email address to get the users avatar from Gravatar
                             let url = gravatarService.gravatarUrlForEmail(emailString: firstEmail!)
-                            URLSession.shared.dataTask(with: url) { data, response, error in
+                            URLSession.shared.dataTask(with: url) { _, _, _ in
                        
                                 DispatchQueue.main.async {
                                     self.avatarImageView.kf.setImage(with: url)
@@ -173,15 +174,13 @@ class AccountTableViewController: UITableViewController {
             }
         }
     }
-
     
-    //MARK: - Services
+    // MARK: - Services
     let accountViewModel: AccountViewModel = AccountViewModel.init()
     let gravatarService: GravatarService = GravatarService.init()
     
-    
-    //MARK: - UI
-    private func setupUI(){
+    // MARK: - UI
+    private func setupUI() {
         
         //Loading Animations
         let gradient = SkeletonGradient(baseColor: UIColor.clouds)
@@ -211,7 +210,10 @@ class AccountTableViewController: UITableViewController {
         MSData.listDocuments(withType: Bookmark.self, partition: kMSDataUserDocumentsPartition, completionHandler: { documents in
             
             for document in documents.currentPage().items {
-                let bookmark = document.deserializedValue as! Bookmark
+                guard let bookmark = document.deserializedValue as? Bookmark
+                else {
+                    fatalError()
+                }
                 self.bookmarks.append(bookmark)
                 
             }
@@ -223,22 +225,21 @@ class AccountTableViewController: UITableViewController {
         
     }
     
-    private func setupHeader(contentOffset: CGFloat){
+    private func setupHeader(contentOffset: CGFloat) {
         
         let width = self.view.frame.width
         
         var avatarImageViewRect = CGRect.init(x: 0, y: Int(contentOffset), width: Int(width), height: headerViewHeight)
         
-        if(Int(tableView.contentOffset.y) <= headerViewHeight){
+        if(Int(tableView.contentOffset.y) <= headerViewHeight) {
             avatarImageView.frame.origin = CGPoint.init(x: avatarImageViewRect.origin.x, y: avatarImageViewRect.origin.y)
             avatarImageView.frame.size = CGSize.init(width: avatarImageViewRect.size.width + contentOffset, height: avatarImageView.frame.size.height + contentOffset )
         }
         avatarImageView.frame = avatarImageViewRect
     }
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet var headerView: UIView!
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var displayNameLabel: UILabel!
 }
-

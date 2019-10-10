@@ -9,8 +9,6 @@
 import Foundation
 import UIKit
 
-class AdvocatesViewController : UITableViewController {
-    
-    
+class AdvocatesViewController: UITableViewController {
     
 }

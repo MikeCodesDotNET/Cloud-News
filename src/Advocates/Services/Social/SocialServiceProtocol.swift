@@ -13,6 +13,6 @@ protocol SocialServiceProtocol {
     
     static var isSetApp: Bool { get }
     
-    static func share(text: String, complection: @escaping (_ isOpened: Bool)->())
+    static func share(text: String, complection: @escaping (_ isOpened: Bool)->Void)
     
 }

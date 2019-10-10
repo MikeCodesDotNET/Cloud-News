@@ -11,14 +11,14 @@ import UIKit
 
 class SettingsService {
         
-    //MARK: - Spotlight Index Search
+    // MARK: - Spotlight Index Search
     func spotlightIntegrationEnabled() -> Bool {
         let key = "spotlightIndex"
         
         //Lets first check if the setting exists
         let settingExists = UserDefaults.standard.object(forKey: key) != nil
         
-        if(settingExists == true){
+        if(settingExists == true) {
             return UserDefaults.standard.bool(forKey: key)
         } else {
             //Create default setting
@@ -28,20 +28,19 @@ class SettingsService {
         }
     }
     
-    func setSpotlightIntegrationEnabled(value: Bool){
+    func setSpotlightIntegrationEnabled(value: Bool) {
         let key = "spotlightIndex"
         UserDefaults.standard.set(value, forKey: key)
     }
-
     
-    //MARK: - Blog Posts
+    // MARK: - Blog Posts
     func useLargeContentMode() -> Bool {
         let key = "largeContentMode"
         
         //Lets first check if the setting exists
         let settingExists = UserDefaults.standard.object(forKey: key) != nil
         
-        if(settingExists == true){
+        if(settingExists == true) {
             return UserDefaults.standard.bool(forKey: key)
         } else {
             //Create default setting
@@ -51,19 +50,19 @@ class SettingsService {
         }
     }
     
-    func setUpdateContentMode(value: Bool){
+    func setUpdateContentMode(value: Bool) {
         let key = "largeContentMode"
         UserDefaults.standard.set(value, forKey: key)
     }
 
-    //MARK: - Safari Reader Mode
+    // MARK: - Safari Reader Mode
     func readerModeEnabled() -> Bool {
         let key = "blogPostReaderMode"
         
         //Lets first check if the setting exists
         let settingExists = UserDefaults.standard.object(forKey: key) != nil
         
-        if(settingExists == true){
+        if(settingExists == true) {
             return UserDefaults.standard.bool(forKey: key)
         } else {
             //Create default setting
@@ -73,22 +72,21 @@ class SettingsService {
         }
     }
     
-    func setReaderModeEnabled(value: Bool){
+    func setReaderModeEnabled(value: Bool) {
         let key = "blogPostReaderMode"
         UserDefaults.standard.set(value, forKey: key)
     }
     
-    
-    //MARK: - Safari Reader Mode
+    // MARK: - Safari Reader Mode
     func defaultBrowser() -> Browser {
         let key = "defaultBrowser"
       
         //Lets first check if the setting exists
         let settingExists = UserDefaults.standard.object(forKey: key) != nil
         
-        if(settingExists == true){
+        if(settingExists == true) {
             let value = UserDefaults.standard.string(forKey: key)
-            switch(value){
+            switch(value) {
                 case "brave":
                     return .brave
                 case "chrome":
@@ -116,10 +114,10 @@ class SettingsService {
         }
     }
     
-    func setDefaultBrowser(value: Browser){
+    func setDefaultBrowser(value: Browser) {
         let key = "defaultBrowser"
         
-        switch(value){
+        switch(value) {
             case .brave:
                 UserDefaults.standard.set("brave", forKey: key)
             case .chrome:

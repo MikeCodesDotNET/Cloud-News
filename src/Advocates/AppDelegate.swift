@@ -20,12 +20,10 @@ import AppCenterCrashes
 import AppCenterAnalytics
 import AppCenterDistribute
 
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -34,19 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
 
         MSAppCenter.start(Constants.AppCenter.apiKey, withServices: [MSDistribute.self, MSCrashes.self, MSAuth.self, MSData.self, MSPush.self, MSAnalytics.self])
 
-
         setupApperance()
-        
         
         //Used when testing authentication flow.
         //MSAuth.signOut()
-        
        
         return true
     }
     
     func setupApperance() {
-        
         
     }
 
@@ -72,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
     
-    
     func push(_ push: MSPush!, didReceive pushNotification: MSPushNotification!) {
         
         //Handle push notifications
@@ -92,7 +85,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
             if item.key == "article" {
                 article = item.value
             }
-            
             
         }
         
@@ -124,12 +116,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
 
         }
         
-        
         if (UIApplication.shared.applicationState == .background) {
             
             //app is in background, if content-available key of your notification is set to 1, poll to your backend to retrieve data and update your interface here
             
-             NSLog("Notification received in background, title: \"\(title)\", message: \"\(message)\", custom data: \"\(customData)\"");
+             NSLog("Notification received in background, title: \"\(title)\", message: \"\(message)\", custom data: \"\(customData)\"")
             
         } else {
             
@@ -171,7 +162,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
                 
                 MSData.read(withDocumentID: uniqueIdentifier, documentType: BlogPost.self, partition: kMSDataAppDocumentsPartition, completionHandler: { document in
                     
-                    let blogPost = document.deserializedValue as! BlogPost
+                    guard let blogPost = document.deserializedValue as? BlogPost
+                        else {
+                            fatalError()
+                    }
                     
                     let browserService = BrowsersService.init()
                     browserService.openUrl(url: URL.init(string: blogPost.url)!)
@@ -183,7 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         return true
     }
     
-    func setupAppearance(){
+    func setupAppearance() {
         
         //Tabbar
         let tabColor = UIColor(hex: "#F6F6F6")
@@ -191,9 +185,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, MSPushDelegate {
         UITabBar.appearance().backgroundColor = tabColor
         UITabBar.appearance().tintColor = tabColor
         
-        
-        
     }
 
 }
-

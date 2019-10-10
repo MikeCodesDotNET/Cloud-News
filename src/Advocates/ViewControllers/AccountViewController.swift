@@ -15,7 +15,6 @@ import AppCenterAuth
 import SkeletonView
 import Kingfisher
 
-
 class AccountTableViewController: UITableViewController {
 
     override func viewDidLoad() {
@@ -39,16 +38,17 @@ class AccountTableViewController: UITableViewController {
         
         refresh()
         
-        
     }
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.bookmarks.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as! BlogPostTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? BlogPostTableViewCell
+        else {
+            FatalErorr()
+        }
      
         let blogPost = self.bookmarks[indexPath.row]
         cell.titleLabel.text = blogPost.title
@@ -68,7 +68,7 @@ class AccountTableViewController: UITableViewController {
         return cell
     }
     
-    private func setupUI(){
+    private func setupUI() {
         
         //Loading Animations
         let gradient = SkeletonGradient(baseColor: UIColor.clouds)
@@ -94,7 +94,6 @@ class AccountTableViewController: UITableViewController {
         
     }
     
-    
     var bookmarks = [BlogPost]()
     
     func refresh() {
@@ -102,10 +101,20 @@ class AccountTableViewController: UITableViewController {
         MSData.listDocuments(withType: Bookmark.self, partition: kMSDataUserDocumentsPartition, completionHandler: { documents in
             
             for document in documents.currentPage().items {
-                let bookmark = document.deserializedValue as! Bookmark
+                guard let bookmark = document.deserializedValue as? Bookmark
+                    else {
+                        FatalErorr()
+                }
                 
-                MSData.read(withDocumentID: bookmark.blogPostId, documentType: BlogPost.self, partition: kMSDataAppDocumentsPartition, completionHandler: { doucment in
-                    self.bookmarks.append(document.deserializedValue as! BlogPost)
+                MSData.read(withDocumentID: bookmark.blogPostId, documentType: BlogPost.self,
+                            partition: kMSDataAppDocumentsPartition, completionHandler: { _ in
+                    
+                    guard let bookmark = document.deserializedValue as? BlogPost
+                    else {
+                        FatalErorr()
+                    }
+    
+                    self.bookmarks.append(bookmark)
                 })
                 
             }
@@ -122,7 +131,5 @@ class AccountTableViewController: UITableViewController {
     @IBOutlet var avatarImageView: UIImageView!
     @IBOutlet var fullNameLabel: UILabel!
     @IBOutlet var displayNameLabel: UILabel!
-    
 
 }
-

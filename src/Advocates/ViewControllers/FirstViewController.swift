@@ -15,10 +15,8 @@ class FirstViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
     
-    func refresh()
-    {
+    func refresh() {
         MSData.listDocuments(withType: BlogPost.self, partition: kMSDataUserDocumentsPartition, completionHandler: { documents in
             
             for document in documents.currentPage().items {
@@ -31,7 +29,5 @@ class FirstViewController: UIViewController {
             
         })
     }
-    
 
 }
-

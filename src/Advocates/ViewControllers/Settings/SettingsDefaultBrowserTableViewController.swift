@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SettingsDefaultBrowserTableViewController : UITableViewController {
+class SettingsDefaultBrowserTableViewController: UITableViewController {
     
     let settingsService = SettingsService()
     var installedBrowsers = [Browser]()
@@ -22,18 +22,23 @@ class SettingsDefaultBrowserTableViewController : UITableViewController {
     
     let browserService = BrowsersService()
     
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return installedBrowsers.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "browserCell") as! BrowserTableCell
-
+        
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: "browserCell",
+            for: indexPath) as? BrowserTableCell
+        else {
+            fatalError("DequeueReusableCell failed while casting")
+        }
+        
         let browser = self.installedBrowsers[indexPath.row]
         
         let defaultBrowser = self.settingsService.defaultBrowser()
-        if(defaultBrowser == browser){
+        if(defaultBrowser == browser) {
             cell.accessoryType = UITableViewCell.AccessoryType.checkmark
         } else {
             cell.accessoryType = UITableViewCell.AccessoryType.none
@@ -41,7 +46,7 @@ class SettingsDefaultBrowserTableViewController : UITableViewController {
         
         cell.browser = browser
         
-        switch(browser){
+        switch(browser) {
         case .brave:
             cell.nameLabel.text = "Brave"
             cell.iconImageView.image = UIImage.init(named: "Settings-Browsers-Brave")

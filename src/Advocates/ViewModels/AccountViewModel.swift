@@ -11,7 +11,6 @@ import AppCenterAuth
 
 class AccountViewModel {
     
-    
     let gravatarService: GravatarService = GravatarService()
     
     var displayName: String
@@ -19,7 +18,7 @@ class AccountViewModel {
     
     var avatarImage: UIImage
     
-    init(){
+    init() {
         displayName = ""
         fullName = ""
         avatarImage = UIImage.init()
@@ -39,7 +38,7 @@ class AccountViewModel {
         return didLogin
     }
     
-    private func decodeToken(token: String){
+    private func decodeToken(token: String) {
         
         let tokenSplit = token.components(separatedBy: ".")
         
@@ -65,10 +64,9 @@ class AccountViewModel {
                         
                         self.fullName = "\(firstName ?? "") \(lastName ?? "")"
                         
-                        
                          // Get email addresses.
                          let emails = claims!["emails"] as? [Any]
-                         if emails != nil && emails!.count > 0 {
+                        if emails != nil && emails!.isEmpty == false {
                          let firstEmail = emails![0] as? String
                          
                          // Use the email address to get the users avatar from Gravatar

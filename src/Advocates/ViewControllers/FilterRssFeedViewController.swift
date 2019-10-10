@@ -10,14 +10,17 @@ import Foundation
 import UIKit
 import SnapKit
 
-class FilterRssFeedViewController : UIViewController {
+class FilterRssFeedViewController: UIViewController {
     
-    
-    var interests:[String] = ["AI & ML", "Analytics", "Blockchain", "Compute", "Containers", "Databases", "Developer Tools", "DevOps", "Identity", "Integration", "IoT", "Media", "Migration", "Mixed Reality", "Mobile", "Networking", "Security", "Storage", "Web", "Windows Virtual Desktop"]
+    var interests: [String] = ["AI & ML", "Analytics", "Blockchain", "Compute",
+                               "Containers", "Databases", "Developer Tools", "DevOps",
+                               "Identity", "Integration", "IoT", "Media",
+                               "Migration", "Mixed Reality", "Mobile", "Networking",
+                               "Security", "Storage", "Web", "Windows Virtual Desktop"]
     
     var interestsScrollView = UIScrollView.init()
-    let buttonPadding:CGFloat = 10
-    var xOffset:CGFloat = 10
+    let buttonPadding: CGFloat = 10
+    var xOffset: CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +31,16 @@ class FilterRssFeedViewController : UIViewController {
         interestsScrollView.backgroundColor = UIColor.clear
         interestsScrollView.translatesAutoresizingMaskIntoConstraints = false
         
-        for i in 0 ... interests.count - 1 {
+        for index in 0 ... interests.count - 1 {
             let button = UIButton()
             
-            let interest: String = interests[i]
-            button.tag = i
+            let interest: String = interests[index]
+            button.tag = index
             button.layer.cornerRadius = 8
             button.layer.masksToBounds = true
             
-            button.backgroundColor = UIColor(red:0.95, green:0.95, blue:0.95, alpha:1.0)
-            button.setTitleColor(UIColor(red:0.22, green:0.22, blue:0.22, alpha:1.0), for: UIControl.State.normal)
+            button.backgroundColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 1.0)
+            button.setTitleColor(UIColor(red: 0.22, green: 0.22, blue: 0.22, alpha: 1.0), for: UIControl.State.normal)
             button.titleLabel?.font = UIFont(name: "SF-Pro-Display-Semibold", size: 18)
             button.setTitle("\(interest)", for: .normal)
             //button.addTarget(self, action: #selector(btnTouch), for: UIControlEvents.touchUpInside)
@@ -46,7 +49,6 @@ class FilterRssFeedViewController : UIViewController {
             
             xOffset = xOffset + CGFloat(buttonPadding) + button.frame.size.width
             interestsScrollView.addSubview(button)
-            
             
         }
         
@@ -71,10 +73,7 @@ class FilterRssFeedViewController : UIViewController {
  */
     }
     
-    
     @IBAction func doneTouchedUpInside(_ sender: Any) {
     }
     
 }
-
-

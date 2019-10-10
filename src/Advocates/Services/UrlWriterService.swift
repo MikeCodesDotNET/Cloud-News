@@ -11,7 +11,6 @@ import UIKit
 
 class UrlWriterService {
     
-    
     /* Sample URL Format:
     // https://docs.microsoft.com/azure/security/azure-security-services-technologies?WT.mc_id=ignite-twitter-jeffsand
     // GOOD: ?WT.mc_id=ignite-twitter-jeffsand
@@ -27,21 +26,18 @@ class UrlWriterService {
     func createTrackableLink(string: String, sharableLink: Bool) -> URL {
         
         //If the URL isn't pointing to a Microsoft web property then we don't need to add the ability to track.
-        if(isMicrosoftProperty(string: string) == false){
+        if(isMicrosoftProperty(string: string) == false) {
             return URL.init(string: string)!
         }
         
-        
-        var appendableTrackingQuery = "";
+        var appendableTrackingQuery = ""
         if(sharableLink == true) {
             appendableTrackingQuery = "?WT.mc_id=\(source)-\(external)-\(alias)"
         } else {
             appendableTrackingQuery = "?WT.mc_id=\(source)-\(inApp)-\(alias)"
         }
         
-        
-        
-        if(string.contains("?")){
+        if(string.contains("?")) {
             //The URL contains queries. We'll need to append on the end
             
             var comp = URLComponents(string: string)
@@ -66,8 +62,5 @@ class UrlWriterService {
         return false
         
     }
-    
-    
-    
     
 }

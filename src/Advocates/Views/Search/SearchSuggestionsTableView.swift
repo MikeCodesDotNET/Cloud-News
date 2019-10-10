@@ -12,7 +12,6 @@ import SafariServices
 class SearchSuggestionsTableView: UITableView, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate {
     
     var searchResults = [SearchResult]()
-    
 
     public override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
@@ -59,7 +58,7 @@ class SearchSuggestionsTableView: UITableView, UITableViewDelegate, UITableViewD
     }
     
     // Handle displaying Hit Highlight. Currently set the font to be slightly bolder
-    func hitHighlightText(searchText: String) -> NSMutableAttributedString{
+    func hitHighlightText(searchText: String) -> NSMutableAttributedString {
         
         let hitAttributes: [NSAttributedString.Key: Any] = [.font: UIFont(name: "Avenir-Black", size: 15)!]
         let defaultAttributes = [NSAttributedString.Key.foregroundColor: UIColor.darkGray]
@@ -69,45 +68,43 @@ class SearchSuggestionsTableView: UITableView, UITableViewDelegate, UITableViewD
         var highlight = false
         var attributedChars = [NSAttributedString]()
         
-        for c in Array(searchText) {
+        for attChar in Array(searchText) {
             
-            if(c == "[") {
+            if(attChar == "[") {
                 
                 //We need to start highlighting
                 highlight = true
                 continue
             }
-            if(c == "]") {
+            if(attChar == "]") {
                 highlight = false
                 continue
             }
             
-            if(highlight == false){
+            if(highlight == false) {
                 //This is the default!
-                let textAttributes = NSAttributedString(string: String(c), attributes: defaultAttributes)
+                let textAttributes = NSAttributedString(string: String(attChar), attributes: defaultAttributes)
                 attributedChars.append(textAttributes)
             }
             
-            if(highlight == true){
+            if(highlight == true) {
                 //This is the default!
-                let textAttributes = NSAttributedString(string: String(c), attributes: hitAttributes)
+                let textAttributes = NSAttributedString(string: String(attChar), attributes: hitAttributes)
                 attributedChars.append(textAttributes)
             }
         }
         
-        for ta in attributedChars {
+        for textAtrribute in attributedChars {
             
-            attributedString.append(ta)
+            attributedString.append(textAtrribute)
         }
         
         return attributedString
     }
     
-    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
        // self.searchListViewDelegate?.searchListViewDidScroll()
     }
-    
     
     func initView() {
         self.delegate = self

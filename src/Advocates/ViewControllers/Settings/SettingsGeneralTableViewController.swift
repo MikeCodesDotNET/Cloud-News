@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SettingsGeneralTableViewController : UITableViewController {
+class SettingsGeneralTableViewController: UITableViewController {
     
     let settingsService = SettingsService()
     
@@ -19,7 +19,6 @@ class SettingsGeneralTableViewController : UITableViewController {
         spotlightIndexSwitch.isOn = self.settingsService.spotlightIntegrationEnabled()
 
     }
-    
     
     @IBAction func spotlightIndexSwitchedChanged(_ sender: Any) {
         self.settingsService.setSpotlightIntegrationEnabled(value: spotlightIndexSwitch.isOn)

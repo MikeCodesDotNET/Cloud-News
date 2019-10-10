@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BrowserTableCell : UITableViewCell {
+class BrowserTableCell: UITableViewCell {
 
     var browser: Browser?
     
