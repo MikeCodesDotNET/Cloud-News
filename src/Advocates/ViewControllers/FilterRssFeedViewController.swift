@@ -47,7 +47,7 @@ class FilterRssFeedViewController: UIViewController {
             
             button.frame = CGRect(x: xOffset, y: CGFloat(buttonPadding + 10), width: 140, height: 90)
             
-            xOffset = xOffset + CGFloat(buttonPadding) + button.frame.size.width
+            xOffset += CGFloat(buttonPadding) + button.frame.size.width
             interestsScrollView.addSubview(button)
             
         }

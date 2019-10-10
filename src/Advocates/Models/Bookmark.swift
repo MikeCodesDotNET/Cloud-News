@@ -22,15 +22,54 @@ class Bookmark: NSObject, MSSerializableDocument {
     
     required public init(from dictionary: [AnyHashable: Any]) {
         
-
-        self.classType = dictionary["classType"] as! String
-        self.identifier = dictionary["identifier"] as! String
-        self.title = dictionary["title"] as! String
-        self.url = dictionary["url"] as! String
-        self.source = dictionary["source"] as! String
-        self.blogPostId = dictionary["blogPostId"] as! String
-        self.primaryImage = dictionary["primaryImage"] as! String
-
+        //Title
+        if let tempTitle = dictionary["title"] as? String {
+            title = tempTitle
+        } else {
+            title = ""
+        }
+        
+        //self.summary = dictionary["summary"] as! String
+        
+        //Blog post id
+        if let tempBlogPostId = dictionary["blogPostId"] as? String {
+             blogPostId = tempBlogPostId
+        } else {
+            blogPostId = ""
+        }
+        
+        
+        //URL
+        if let tempUrl = dictionary["url"] as? String {
+             url = tempUrl
+        } else {
+            url = ""
+        }
+        
+        if let tempClassType = dictionary["classType"] as? String {
+             classType = tempClassType
+        } else {
+            classType = ""
+        }
+        
+        if let tempIdentifier = dictionary["identifier"] as? String {
+              identifier = tempIdentifier
+         } else {
+             identifier = ""
+         }
+         
+        if let tempSource = dictionary["source"] as? String {
+                source = tempSource
+           } else {
+               source = ""
+           }
+        
+        if let tempPrimaryImage = dictionary["primaryImage"] as? String {
+                       primaryImage = tempPrimaryImage
+                  } else {
+                      primaryImage = ""
+                  }
+        
     }
     
     init(identifier: String, title: String, url: String, source: String, blogPostId: String, primaryImage: String) {

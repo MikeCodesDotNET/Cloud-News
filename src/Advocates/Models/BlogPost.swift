@@ -21,14 +21,53 @@ class BlogPost: NSObject, MSSerializableDocument {
     var source: String
     
     required public init(from dictionary: [AnyHashable: Any]) {
-        self.title = dictionary["title"] as! String
-        self.isFamilyFriendly = dictionary["isFamilyFriendly"] as! Bool
-        self.primaryImage = PrimaryImage.init(from: dictionary["primaryImage"] as! [AnyHashable: Any] )
+        
+        //Title
+        if let tempTitle = dictionary["title"] as? String {
+            title = tempTitle
+        } else {
+            title = ""
+        }
+        
+        //Is Family Friendly
+        if let tempIsFamilyFriendly = dictionary["isFamilyFriendly"] as? Bool {
+            isFamilyFriendly = tempIsFamilyFriendly
+        } else {
+            isFamilyFriendly = false
+        }
+        
+        if let primaryImageDict = dictionary["primaryImage"] as? [AnyHashable: Any] {
+            self.primaryImage = PrimaryImage.init(from: primaryImageDict)
+        } else {
+            self.primaryImage = PrimaryImage.init(contentUrl: "")
+        }
         //self.summary = dictionary["summary"] as! String
-        self.url = dictionary["url"] as! String
-        self.classType = dictionary["classType"] as! String
-        self.identifier = dictionary["identifier"] as! String
-        self.source = dictionary["source"] as! String
+        
+        //URL
+        if let tempUrl = dictionary["url"] as? String {
+             url = tempUrl
+        } else {
+            url = ""
+        }
+        
+        if let tempClassType = dictionary["classType"] as? String {
+             classType = tempClassType
+        } else {
+            classType = ""
+        }
+        
+        if let tempIdentifier = dictionary["identifier"] as? String {
+              identifier = tempIdentifier
+         } else {
+             identifier = ""
+         }
+         
+        if let tempSource = dictionary["source"] as? String {
+                source = tempSource
+           } else {
+               source = ""
+           }
+        
 
     }
    
@@ -62,7 +101,12 @@ class PrimaryImage: NSObject, MSSerializableDocument {
     let contentUrl: String
     
     required public init(from dictionary: [AnyHashable: Any]) {
-         self.contentUrl = dictionary["contentUrl"] as! String
+        
+        if let tempContentUrl = dictionary["contentUrl"] as? String {
+                    contentUrl = tempContentUrl
+               } else {
+                   contentUrl = ""
+               }
     }
     
     public func serializeToDictionary() -> [AnyHashable: Any] {

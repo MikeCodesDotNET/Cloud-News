@@ -33,7 +33,8 @@ class SearchService {
         encoder.outputFormatting = .prettyPrinted
         
         
-        let encodedRequest = try! encoder.encode(suggestionRequest)
+        guard let encodedRequest = try? encoder.encode(suggestionRequest)
+            else { fatalError() }
      
     
         //Create query URL b
@@ -83,7 +84,11 @@ class SearchService {
         let searchRequest = SearchRequest.init(count: true, minimumCoverage: 100, searchTerm: query, searchFields: "title")
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let encodedRequest = try! encoder.encode(searchRequest)
+        guard let encodedRequest = try? encoder.encode(searchRequest)
+            else { fatalError() }
+        
+        
+        
         
         //Create query URL b
         let url = URL(string: "\(baseUrl)/docs/search?api-version=\(apiVersion)")!
