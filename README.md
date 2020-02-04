@@ -2,6 +2,9 @@
 
 by [Mike James](https://twitter.com/mikecodesdotnet)
 
+# Important News! 
+App Center MBaaS will not mature out of preview. Read more about it [here](https://devblogs.microsoft.com/appcenter/app-center-mbaas-retirement/)
+
 # The App
 
 <a href="" target="_blank"><img align="left" src="resources/fanDevices.png" width="360"/></a>
